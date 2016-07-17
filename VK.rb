@@ -6,7 +6,6 @@ class VK
   def initialize access_token, secret = nil
     @access_token = access_token
     @secret = secret
-    @prefix_uri = "https://api.vk.com/method/"
   end
   
   def callMethod name, params
