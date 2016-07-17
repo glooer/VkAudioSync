@@ -9,9 +9,9 @@ class VK
   end
   
   def callMethod name, params
-    params.update("access_token" => @access_token){ |_, b, c| b || c } #åñëè access_token óêàçàí òî îñòàâèì åãî, èíà÷å äîáàâèì ëîêàëüíûé
+    params.update("access_token" => @access_token){ |_, b, c| b || c } #ÐµÑÐ»Ð¸ access_token ÑƒÐºÐ°Ð·Ð°Ð½ Ñ‚Ð¾ Ð¾ÑÑ‚Ð°Ð²Ð¸Ð¼ ÐµÐ³Ð¾, Ð¸Ð½Ð°Ñ‡Ðµ Ð´Ð¾Ð±Ð°Ð²Ð¸Ð¼ Ð»Ð¾ÐºÐ°Ð»ÑŒÐ½Ñ‹Ð¹
     
-    params["sig"] = Digest::MD5.hexdigest("/method/#{name}?#{URI.encode_www_form(params)}" + @secret) #äëÿ ðàáîòû áåç https
+    params["sig"] = Digest::MD5.hexdigest("/method/#{name}?#{URI.encode_www_form(params)}" + @secret) #Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ Ð±ÐµÐ· https
     
     JSON.parse(Net::HTTP.get(URI::HTTP.build({:host => "api.vk.com", :path => "/method/#{name}", :query => URI.encode_www_form(params)})))
     
