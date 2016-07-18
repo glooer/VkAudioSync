@@ -6,10 +6,10 @@ require "open-uri" #for open url
 
 THREAD_COUNT = 4; #количество потоков
 
-ACCESS_TOKEN = "a4508400baba2a626049fc8cba0197e9a517b05f7bde5ec8bd5d933e991ed8456385b7e1209ca81412e12"
-SECRET = "7aae67b0db223f0c0f"
+ACCESS_TOKEN = "1eb012004011f9a8d4ce6e70d4075b22d0794296f20a38a4ed16f134c84673ba3933e74cc2c5adc44798a"
+SECRET = "a5f3805f79d0cd15e6"
 
-OWNER_ID = 114095390
+OWNER_ID = 20882339
 
 vk = VK.new ACCESS_TOKEN, SECRET
 
@@ -56,6 +56,10 @@ if (musics = music["response"])
         p e
       end
     end
+  end
+else
+  if (error = music["error"])
+    print error["error_msg"]
   end
 end
 
